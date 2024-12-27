@@ -1,0 +1,14 @@
+[
+    {
+        "station_name" : "New Delhi",
+        "station_id" : "NDLS",
+        "station_master" : "MS Dhoni",
+        "platforms" : 16
+    },
+    {
+        "station_name" : "Ambala Cantt.",
+        "station_id" : "UMB",
+        "station_master" : "Virat Kohli",
+        "platforms" : 7
+    }
+]

@@ -3,12 +3,31 @@
  */
 package org.example;
 
+// import java.util.Date;
+
+import org.example.entities.User;
+import org.example.services.TrainBooking;
+import org.example.services.UserBooking;
+import org.example.services.stationsList;
+
 public class App {
     public String getGreeting() {
         return "Hello World!";
     }
 
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+        // System.out.println(new App().getGreeting());
+        User u = new User();
+        try {
+            UserBooking ub = new UserBooking(u);
+            ub.UserLogin();
+            TrainBooking tb = new TrainBooking();
+            tb.Print();
+            stationsList sl = new stationsList();
+            sl.Print();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
     }
 }

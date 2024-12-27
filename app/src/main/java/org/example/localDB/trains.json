@@ -1,0 +1,53 @@
+[
+    {
+        "train_name" : "KALKA SHATABDI EXP",
+        "train_number" : "12005",
+        "seats": [
+            [false, false, false, false, false],
+            [false, false, false, false, false],
+            [false, false, false, false, false],
+            [false, false, false, false, false],
+            [false, false, false, false, false]
+        ],
+        "stations": {
+            "NDLS": "17:15:00",
+            "PAN": "18:18:00",
+            "KUK": "19:00:00",
+            "UMB": "19:50:00",
+            "CDG": "20:30:00",
+            "KLK": "21:15:00"
+        },
+        "stops" : ["New Delhi", "Panipat", "Kurukshetra", "Ambala Cantt.", "Chandigarh", "Kalka"],
+        "source" : "New Delhi",
+        "destination" : "Kalka",
+        "depttime" : "17:15:00",
+        "endtime" : "21:15:00",
+        "deptdate" : "2024-08-12",
+        "arrdate" : "2024-08-12"
+    },
+    {
+        "train_name" : "CDG SHATABDI EXP",
+        "train_number" : "12046",
+        "seats": [
+            [false, false, false, false, false],
+            [false, false, false, false, false],
+            [false, false, false, false, false],
+            [false, false, false, false, false],
+            [false, false, false, false, false]
+        ],
+        "stations": {
+            "CDG": "12:05:00",
+            "UMB": "12:43:00",
+            "Karnal": "13:35:00",
+            "NDLS": "15:20:00"
+        },
+        "stops" : ["Chandigarh", "Ambala Cantt.", "Karnal", "New Delhi"],
+        "source" : "Chandigarh",
+        "destination" : "New Delhi",
+        "depttime" : "12:05:00",
+        "endtime" : "15:20:00",
+        "deptdate" : "2024-08-12",
+        "arrdate" : "2024-08-12"
+    }
+    
+]
