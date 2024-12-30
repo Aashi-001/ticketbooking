@@ -3,30 +3,103 @@
  */
 package org.example;
 
+import java.io.IOException;
+import java.util.*;
+import java.util.Scanner;
+
+// import java.util.Scanner;
+
 // import java.util.Date;
 
 import org.example.entities.User;
 import org.example.services.TrainBooking;
 import org.example.services.UserBooking;
 import org.example.services.stationsList;
+import org.example.util.UserServiceUtil;
+
+import com.fasterxml.jackson.core.JsonGenerationException;
+import com.fasterxml.jackson.databind.JsonMappingException;
 
 public class App {
     public String getGreeting() {
         return "Hello World!";
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws JsonGenerationException, JsonMappingException, IOException {
         // System.out.println(new App().getGreeting());
-        User u = new User();
-        try {
-            UserBooking ub = new UserBooking(u);
-            ub.UserLogin();
-            TrainBooking tb = new TrainBooking();
-            tb.Print();
-            stationsList sl = new stationsList();
-            sl.Print();
-        } catch (Exception e) {
-            System.out.println(e);
+        // User u = new User();
+        // Scanner scanner = new Scanner(System.in);
+        // int opt = 0;
+        // boolean loggedin = false;
+        int lastid = 2;
+
+        // try {
+        //     UserBooking ub = new UserBooking(u);
+        //     System.out.println(ub.UserLogin("1", "abcdefgh"));
+        //     // System.out.println(ub.userSignup("2", "abcd", "diksha"));
+        //     TrainBooking tb = new TrainBooking();
+        //     tb.Print();
+        //     stationsList sl = new stationsList();
+        //     sl.Print();
+        // } catch (Exception e) {
+        //     System.out.println(e);
+        // }
+        UserBooking ub;
+        User loggedUser = null;
+        try (Scanner scanner = new Scanner(System.in)) {
+            int option = 0;
+            try {
+                ub = new UserBooking();
+            } catch (Exception e){
+                System.out.println(e);
+                return ;
+            }
+            while(option!=7){
+                System.out.println("Choose option");
+                System.out.println("1. Sign up");
+                System.out.println("2. Login");
+                System.out.println("3. Fetch Bookings");
+                System.out.println("4. Search Trains");
+                System.out.println("5. Book a Seat");
+                System.out.println("6. Cancel my Booking");
+                System.out.println("7. Exit the App");
+                option = scanner.nextInt();
+                switch (option) {
+                    case 1:
+                        System.out.println("Enter the username to signup");
+                        String nameToSignUp = scanner.next();
+                        System.out.println("Enter the password to signup");
+                        String passwordToSignUp = scanner.next();
+                        // User newUser = new User(nameToSignUp, passwordToSignUp, String.valueOf(lastid));
+                        ub.userSignup(nameToSignUp, passwordToSignUp, String.valueOf(lastid));
+                        lastid++;
+                        break;
+                    case 2:
+                        System.out.println("Enter the username to Login");
+                        String nameToLogin = scanner.next();
+                        System.out.println("Enter the password to signup");
+                        String passwordToLogin = scanner.next();
+                        try {
+                            // loggedin = ub.UserLogin(nameToLogin, passwordToLogin);
+                            loggedUser = ub.UserLogin(nameToLogin, passwordToLogin);
+                        } catch (Exception e) {
+                            System.out.println(e + " " + "could not login");
+                            return;
+                        }
+                        break;
+                    case 3:
+                        if(loggedUser == null) {
+                            System.out.println("login first");
+                        }
+                        else{
+                            System.out.println("Fetching your bookings");
+                            ub.fetchBookings(loggedUser);
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
 
     }

@@ -46,4 +46,7 @@ public class Train {
     public Date getArrTime(){
         return this.trainArrDate;
     }
+    public Map<Station, Time> getstopTime(){
+        return this.stopTime;
+    }
 }

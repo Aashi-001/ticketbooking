@@ -15,6 +15,7 @@ public class User {
     private String userID;
     @JsonProperty("bookingList")
     private List<Ticket> bookingList;
+    private boolean loggedin = false;
 
     public User(){}
 
@@ -52,5 +53,9 @@ public class User {
 
     public void setBookingList(List<Ticket> l){
         this.bookingList = l;
+    }
+
+    public void setloggedIn(){
+        this.loggedin = true;
     }
 }

@@ -2,6 +2,8 @@ package org.example.entities;
 
 import java.util.*;
 
+import java.sql.Time;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Ticket {
@@ -20,4 +22,15 @@ public class Ticket {
     private Train ofTrain;
 
     public Ticket() {}
+
+    public void displayInfo(){
+        System.out.println(ticketid);
+        System.out.println(source.getStationName());
+        System.out.println(dest.getStationName());
+        System.out.println(journeyDate);
+        System.out.println(ofTrain.getName());
+        Map<Station, Time> mp = ofTrain.getstopTime();
+        System.out.println(mp.get(source));
+        System.out.println(mp.get(dest));
+    }
 }
